@@ -1,0 +1,90 @@
+{% extends "students/base_employee.html" %}
+
+{% block body %}
+  <!-- <h3 class="text-center m-4">Add User</h3>
+   -->
+{% if  error %}
+   <div class=" alert alert-danger" role="alert">
+     {{msg}}
+   </div>
+ {%  endif %}
+
+  {% if success %}
+    <div class="alert alert-success" role="alert">
+      The new User added successfully.
+      <a href="{% url 'Login_form' %}" class="alert-link">Go to Login .</a>
+    </div>
+  
+   
+  {% else %}
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <!-- <div class="card bg-light mb-3">
+          <!-- <div class="card-header">
+            <i class="fa-solid fa-address-card fa-lg"></i> User Registration
+          </div> -->
+          <!-- <div class="card-body">  -->
+            <div class="center1">
+              <h1>Signup Account </h1>
+             
+              
+
+            <form action="{% url 'Sign_in_for_user' %}" method="POST">
+            
+              {% csrf_token %}
+              <!-- {{ form.as_p }} -->
+              <!-- fields = ['emply_name', 'company_code','company_name' ,'user_name','email','password_of_user' ,'confirm_password'] -->
+
+              <div class="txt_field">
+                {{ form.emply_name}}
+                <span></span>
+                <label>{{ form.emply_name.label}}</label>
+              </div>
+              <div class="txt_field">
+                {{ form.company_code}}
+                <span></span>
+                <label>{{ form.company_code.label}}</label>
+              </div>
+              <div class="txt_field">
+                {{ form.company_name}}
+                <span></span>
+                <label>{{ form.company_name.label}}</label>
+              </div>
+              <div class="txt_field">
+                {{ form.user_name}}
+                <span></span>
+                <label>{{ form.user_name.label}}</label>
+              </div>
+              <div class="txt_field">
+                {{ form.email}}
+                <span></span>
+                <label>{{ form.email.label}}</label>
+              </div>
+              <div class="txt_field">
+                {{ form.password_of_user}}
+                <span></span>
+                <label>{{ form.password_of_user.label}}</label>
+              </div>
+              <div class="txt_field">
+                {{ form.confirm_password}}
+                <span></span>
+                <label>{{ form.confirm_password.label}}</label>
+              </div>
+            <button type="submit" class="btn btn-primary" id="#btnSubmit" >SignUp</button>
+              <div class="signup_link">
+                Already have an Account ? <a href="{% url 'Login_form' %}">Login</a>
+              </div>
+              </form>
+              
+            <!-- </div> -->
+            
+                
+                
+            
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
